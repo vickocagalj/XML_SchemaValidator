@@ -64,7 +64,7 @@ namespace XML_SchemaValidator
             this.buttonUčitajXML.TabIndex = 2;
             this.buttonUčitajXML.Text = "Učitaj...";
             this.buttonUčitajXML.UseVisualStyleBackColor = true;
-            this.buttonUčitajXML.Click += new System.EventHandler(this.buttonXML_Click);
+            this.buttonUčitajXML.Click += new System.EventHandler(this.buttonUčitajXML_Click);
             // 
             // buttonUčitajXSD
             // 
