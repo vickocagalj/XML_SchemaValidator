@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XML_SchemaValidator", "XML_SchemaValidator\XML_SchemaValidator.csproj", "{381F4758-58AB-4E35-9034-10A43B7DE414}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{381F4758-58AB-4E35-9034-10A43B7DE414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{381F4758-58AB-4E35-9034-10A43B7DE414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{381F4758-58AB-4E35-9034-10A43B7DE414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{381F4758-58AB-4E35-9034-10A43B7DE414}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00F28AD6-7F1D-475D-9E05-61141B4D8031}
+	EndGlobalSection
+EndGlobal
