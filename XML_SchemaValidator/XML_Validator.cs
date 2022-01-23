@@ -31,5 +31,11 @@ namespace XML_SchemaValidator
         {
 
         }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            textBoxXML.Clear();
+            textBoxXSD.Clear();
+        }
     }
 }
