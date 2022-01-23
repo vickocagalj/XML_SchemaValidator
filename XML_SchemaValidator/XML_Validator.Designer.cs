@@ -55,6 +55,9 @@ namespace XML_SchemaValidator
             this.textBoxXML.Name = "textBoxXML";
             this.textBoxXML.Size = new System.Drawing.Size(373, 22);
             this.textBoxXML.TabIndex = 1;
+            this.textBoxXML.ReadOnly = true;
+            this.textBoxXML.BackColor = System.Drawing.SystemColors.Window;
+
             // 
             // buttonUčitajXML
             // 
@@ -82,6 +85,8 @@ namespace XML_SchemaValidator
             this.textBoxXSD.Name = "textBoxXSD";
             this.textBoxXSD.Size = new System.Drawing.Size(373, 22);
             this.textBoxXSD.TabIndex = 4;
+            this.textBoxXSD.ReadOnly = true;
+            this.textBoxXSD.BackColor = System.Drawing.SystemColors.Window;
             // 
             // label_XSD
             // 
@@ -100,6 +105,7 @@ namespace XML_SchemaValidator
             this.buttonProvjeri.TabIndex = 6;
             this.buttonProvjeri.Text = "Provjeri";
             this.buttonProvjeri.UseVisualStyleBackColor = true;
+            this.buttonProvjeri.Click += new System.EventHandler(this.buttonProvjeri_Click);
             // 
             // buttonReset
             // 
@@ -115,9 +121,11 @@ namespace XML_SchemaValidator
             // 
             this.richTextBoxLog.Location = new System.Drawing.Point(90, 189);
             this.richTextBoxLog.Name = "richTextBoxLog";
-            this.richTextBoxLog.Size = new System.Drawing.Size(627, 228);
+            this.richTextBoxLog.Size = new System.Drawing.Size(627, 179);
             this.richTextBoxLog.TabIndex = 8;
             this.richTextBoxLog.Text = "";
+            this.richTextBoxLog.ReadOnly = true;
+            this.richTextBoxLog.BackColor = System.Drawing.SystemColors.Window;
             // 
             // Form1
             // 

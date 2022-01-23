@@ -37,7 +37,7 @@ namespace XML_SchemaValidator
             }
             catch (FileLoadException exception)
             {
-                richTextBoxLog.AppendText(exception.Message);
+                richTextBoxLog.Text = exception.Message;
             }
         }
 
@@ -48,14 +48,14 @@ namespace XML_SchemaValidator
                 FileDialog xsdDialog = new OpenFileDialog();
                 xsdDialog.Filter = "Schema File (*.xsd)|*.xsd|All Files (*.*)|*.*";
                 xsdDialog.FilterIndex = 1;
-                xsdDialog.DefaultExt = "xml";
+                xsdDialog.DefaultExt = "xsd";
 
                 if (xsdDialog.ShowDialog() == DialogResult.OK)
-                    textBoxXML.Text = xsdDialog.FileName;
+                    textBoxXSD.Text = xsdDialog.FileName;
             }
-            catch (FileLoadException exception)
+            catch (FileNotFoundException exception)
             {
-                richTextBoxLog.AppendText(exception.Message);
+                richTextBoxLog.Text = exception.Message;
             }
         }
 
@@ -63,6 +63,19 @@ namespace XML_SchemaValidator
         {
             textBoxXML.Clear();
             textBoxXSD.Clear();
+            richTextBoxLog.Text = "";
+        }
+
+        private void buttonProvjeri_Click(object sender, EventArgs e)
+        {
+            if (textBoxXML.Text.Length == 0 || textBoxXSD.Text.Length == 0)
+                //richTextBoxLog.Text("Učitana datoteka nije u xml ili txt formatu.");
+                //MessageBox.Show("");
+                richTextBoxLog.Text = "Molim učitajte XML datoteku u .xml i XSD shemu u .xsd formatu.";
+            else if (Path.GetExtension(textBoxXML.Text) != ".xml")
+                richTextBoxLog.Text = "Učitana datoteka nije u .xml formatu. Molim učitajte .xml datoteku.";
+            else if (Path.GetExtension(textBoxXSD.Text) != ".xsd")
+                richTextBoxLog.Text = "Učitana XSD shema nije u .xsd formatu. Molim učitajte .xsd shemu.";
         }
     }
 }
