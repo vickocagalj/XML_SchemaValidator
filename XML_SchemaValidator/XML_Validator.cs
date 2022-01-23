@@ -21,5 +21,15 @@ namespace XML_SchemaValidator
         {
 
         }
+
+        private void buttonXML_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonUčitajXSD_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
