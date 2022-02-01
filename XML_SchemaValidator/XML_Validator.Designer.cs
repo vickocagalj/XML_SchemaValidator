@@ -29,6 +29,7 @@ namespace XML_SchemaValidator
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelXML = new System.Windows.Forms.Label();
             this.textBoxXML = new System.Windows.Forms.TextBox();
             this.buttonUčitajXML = new System.Windows.Forms.Button();
@@ -142,6 +143,7 @@ namespace XML_SchemaValidator
             this.Controls.Add(this.buttonUčitajXML);
             this.Controls.Add(this.textBoxXML);
             this.Controls.Add(this.labelXML);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "XML Schema Validation";
             this.ResumeLayout(false);
