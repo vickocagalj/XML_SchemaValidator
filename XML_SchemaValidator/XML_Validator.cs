@@ -22,6 +22,7 @@ namespace XML_SchemaValidator
             InitializeComponent();
         }
 
+
         private void buttonUčitajXML_Click(object sender, EventArgs e)
         {
             try
@@ -80,8 +81,6 @@ namespace XML_SchemaValidator
                 try
                 {
                     string schemaFile = textBoxXSD.Text;
-
-
                     string filename = textBoxXML.Text;
 
                     XmlSchemaSet schema = new XmlSchemaSet();
@@ -100,11 +99,15 @@ namespace XML_SchemaValidator
                 }
                 catch (XmlException exception)
                 {
-                    richTextBoxLog.Text = $"Incorrect XML file:\n\n{exception.Message}";
+                    richTextBoxLog.ForeColor = Color.Red;
+                    richTextBoxLog.Text = $"Incorrect XML file:\n\n";
+                    richTextBoxLog.AppendText(exception.Message, Color.Black);
                 }
                 catch (XmlSchemaException exception)
                 {
+                    richTextBoxLog.ForeColor = Color.Red;
                     richTextBoxLog.Text = $"Incorrect XSD schema file:\n\n{exception.Message}";
+                    richTextBoxLog.AppendText(exception.Message, Color.Black);
                 }
             }
         }
@@ -115,12 +118,28 @@ namespace XML_SchemaValidator
             switch (e.Severity)
             {
                 case XmlSeverityType.Error:
-                    richTextBoxLog.Text = $"Validation Error:\n\n{e.Message}";
+                    richTextBoxLog.ForeColor = Color.Red;
+                    richTextBoxLog.Text = $"Validation Error:\n\n";
+                    richTextBoxLog.AppendText(e.Message, Color.Black);
                     break;
+
                 case XmlSeverityType.Warning:
                     richTextBoxLog.Text = $"Validation Warning:\n\n {e.Message}";
+                    richTextBoxLog.ForeColor = Color.Yellow;
                     break;
             }
+        }
+    }
+    public static class RichTextBoxExtensions
+    {
+        public static void AppendText(this RichTextBox box, string text, Color color)
+        {
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+
+            box.SelectionColor = color;
+            box.AppendText(text);
+            box.SelectionColor = box.ForeColor;
         }
     }
 }

@@ -119,6 +119,7 @@ namespace XML_SchemaValidator
             // richTextBoxLog
             // 
             this.richTextBoxLog.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBoxLog.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.richTextBoxLog.Location = new System.Drawing.Point(90, 189);
             this.richTextBoxLog.Name = "richTextBoxLog";
             this.richTextBoxLog.ReadOnly = true;
