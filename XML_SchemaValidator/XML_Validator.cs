@@ -8,19 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace XML_SchemaValidator
 {
     public partial class Form1 : Form
     {
+        private bool valid = true;
+
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonUčitajXML_Click(object sender, EventArgs e)
@@ -76,6 +75,52 @@ namespace XML_SchemaValidator
                 richTextBoxLog.Text = "Učitana datoteka nije u .xml formatu. Molim učitajte .xml datoteku.";
             else if (Path.GetExtension(textBoxXSD.Text) != ".xsd")
                 richTextBoxLog.Text = "Učitana XSD shema nije u .xsd formatu. Molim učitajte .xsd shemu.";
+            else
+            {
+                try
+                {
+                    string schemaFile = textBoxXSD.Text;
+
+
+                    string filename = textBoxXML.Text;
+
+                    XmlSchemaSet schema = new XmlSchemaSet();
+                    schema.Add(null, schemaFile);
+
+                    XmlDocument document = new XmlDocument();
+                    document.Schemas.Add(schema);
+                    document.Load(filename);
+                    ValidationEventHandler eventHandler = ValidationEventHandler;
+                    // the following call to Validate succeeds.
+                    document.Validate(eventHandler);
+
+                    if (valid)
+                        richTextBoxLog.Text = "OK";
+
+                }
+                catch (XmlException exception)
+                {
+                    richTextBoxLog.Text = $"Incorrect XML file:\n\n{exception.Message}";
+                }
+                catch (XmlSchemaException exception)
+                {
+                    richTextBoxLog.Text = $"Incorrect XSD schema file:\n\n{exception.Message}";
+                }
+            }
+        }
+
+        private void ValidationEventHandler(object sender, ValidationEventArgs e)
+        {
+            valid = false;
+            switch (e.Severity)
+            {
+                case XmlSeverityType.Error:
+                    richTextBoxLog.Text = $"Validation Error:\n\n{e.Message}";
+                    break;
+                case XmlSeverityType.Warning:
+                    richTextBoxLog.Text = $"Validation Warning:\n\n {e.Message}";
+                    break;
+            }
         }
     }
 }

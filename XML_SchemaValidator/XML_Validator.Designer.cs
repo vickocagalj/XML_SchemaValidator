@@ -51,13 +51,12 @@ namespace XML_SchemaValidator
             // 
             // textBoxXML
             // 
+            this.textBoxXML.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxXML.Location = new System.Drawing.Point(243, 56);
             this.textBoxXML.Name = "textBoxXML";
+            this.textBoxXML.ReadOnly = true;
             this.textBoxXML.Size = new System.Drawing.Size(373, 22);
             this.textBoxXML.TabIndex = 1;
-            this.textBoxXML.ReadOnly = true;
-            this.textBoxXML.BackColor = System.Drawing.SystemColors.Window;
-
             // 
             // buttonUčitajXML
             // 
@@ -81,12 +80,12 @@ namespace XML_SchemaValidator
             // 
             // textBoxXSD
             // 
+            this.textBoxXSD.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxXSD.Location = new System.Drawing.Point(243, 104);
             this.textBoxXSD.Name = "textBoxXSD";
+            this.textBoxXSD.ReadOnly = true;
             this.textBoxXSD.Size = new System.Drawing.Size(373, 22);
             this.textBoxXSD.TabIndex = 4;
-            this.textBoxXSD.ReadOnly = true;
-            this.textBoxXSD.BackColor = System.Drawing.SystemColors.Window;
             // 
             // label_XSD
             // 
@@ -119,13 +118,14 @@ namespace XML_SchemaValidator
             // 
             // richTextBoxLog
             // 
+            this.richTextBoxLog.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBoxLog.Location = new System.Drawing.Point(90, 189);
             this.richTextBoxLog.Name = "richTextBoxLog";
+            this.richTextBoxLog.ReadOnly = true;
+            this.richTextBoxLog.ShowSelectionMargin = true;
             this.richTextBoxLog.Size = new System.Drawing.Size(627, 179);
             this.richTextBoxLog.TabIndex = 8;
             this.richTextBoxLog.Text = "";
-            this.richTextBoxLog.ReadOnly = true;
-            this.richTextBoxLog.BackColor = System.Drawing.SystemColors.Window;
             // 
             // Form1
             // 
@@ -143,7 +143,6 @@ namespace XML_SchemaValidator
             this.Controls.Add(this.labelXML);
             this.Name = "Form1";
             this.Text = "XML Schema Validation";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
