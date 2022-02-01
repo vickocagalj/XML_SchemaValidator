@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace XML_SchemaValidator
 {
     partial class Form1
@@ -143,7 +145,9 @@ namespace XML_SchemaValidator
             this.Controls.Add(this.buttonUčitajXML);
             this.Controls.Add(this.textBoxXML);
             this.Controls.Add(this.labelXML);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "XML Schema Validation";
             this.ResumeLayout(false);

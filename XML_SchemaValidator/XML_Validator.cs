@@ -23,7 +23,6 @@ namespace XML_SchemaValidator
             InitializeComponent();
         }
 
-
         private void buttonUčitajXML_Click(object sender, EventArgs e)
         {
             try
