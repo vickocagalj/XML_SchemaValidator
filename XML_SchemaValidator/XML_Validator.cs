@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace XML_SchemaValidator
 {
     public partial class Form1 : Form
     {
-        private bool valid = true;
+        private bool _valid;
 
         public Form1()
         {
@@ -63,14 +64,12 @@ namespace XML_SchemaValidator
         {
             textBoxXML.Clear();
             textBoxXSD.Clear();
-            richTextBoxLog.Text = "";
+            richTextBoxLog.Clear();
         }
 
         private void buttonProvjeri_Click(object sender, EventArgs e)
         {
             if (textBoxXML.Text.Length == 0 || textBoxXSD.Text.Length == 0)
-                //richTextBoxLog.Text("Učitana datoteka nije u xml ili txt formatu.");
-                //MessageBox.Show("");
                 richTextBoxLog.Text = "Molim učitajte XML datoteku u .xml i XSD shemu u .xsd formatu.";
             else if (Path.GetExtension(textBoxXML.Text) != ".xml")
                 richTextBoxLog.Text = "Učitana datoteka nije u .xml formatu. Molim učitajte .xml datoteku.";
@@ -80,6 +79,7 @@ namespace XML_SchemaValidator
             {
                 try
                 {
+                    _valid = true;
                     string schemaFile = textBoxXSD.Text;
                     string filename = textBoxXML.Text;
 
@@ -89,13 +89,16 @@ namespace XML_SchemaValidator
                     XmlDocument document = new XmlDocument();
                     document.Schemas.Add(schema);
                     document.Load(filename);
+                    
                     ValidationEventHandler eventHandler = ValidationEventHandler;
                     // the following call to Validate succeeds.
                     document.Validate(eventHandler);
 
-                    if (valid)
+                    if (_valid)
+                    {
+                        richTextBoxLog.ForeColor = Color.Black;
                         richTextBoxLog.Text = "OK";
-
+                    }
                 }
                 catch (XmlException exception)
                 {
@@ -114,7 +117,7 @@ namespace XML_SchemaValidator
 
         private void ValidationEventHandler(object sender, ValidationEventArgs e)
         {
-            valid = false;
+            _valid = false;
             switch (e.Severity)
             {
                 case XmlSeverityType.Error:
